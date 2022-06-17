@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { errorHandler } = require("./middleware/errorMiddleware");
 
 require("dotenv").config();
 
@@ -17,5 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 const goalRoutes = require("./routes/goalRoutes");
 
 app.use("/api/goals", goalRoutes);
+
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
