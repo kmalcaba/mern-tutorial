@@ -11,6 +11,7 @@ connectDB();
 // create the server
 const app = express();
 const port = process.env.PORT;
+const host = process.env.HOST || "0.0.0.0";
 
 // middleware
 app.use(cors());
@@ -40,4 +41,4 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server is running on port: ${port}`));
+app.listen(port, host, () => console.log(`Server is running on port: ${port}`));
